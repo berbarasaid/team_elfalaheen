@@ -123,7 +123,7 @@
             <a class="nav-link" href="#">My Trips</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Favorites</a>
+            <a class="nav-link" href="fav.html">Favorites</a>
           </li>
         </ul>
 
@@ -174,8 +174,13 @@
 <script>
   
   var myArray = JSON.parse(localStorage.getItem("loved")) || [];
+  
 
   function loved(id) {
+
+var pro=JSON.parse(localStorage.getItem("products"))
+var favItem = pro.find(p => p.id === id);
+   if(favItem){
     var exist = myArray.find(p => p.id === id);
     if (!exist) {
       Swal.fire({
@@ -185,17 +190,25 @@
       });
 
      
-      myArray.push({ id: id });
+      myArray.push(favItem);
+console.log(myArray);
 
       localStorage.setItem("loved", JSON.stringify(myArray));
-    } else {
+   }
+     else {
       Swal.fire({
         title: "Already loved!",
         icon: "info",
         draggable: true
       });
-    }
+    }}
   }
+  function view(id) {
+
+      window.location.href="details.html"
+      
+    }
+
 
   fetch("https://edu-me01.github.io/Traval-task/api/data.json")
     .then(response => response.json())
@@ -211,10 +224,10 @@
       a.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">42,664,776</h3>`;
 
       var contanner = document.getElementById("contanner");
+      localStorage.setItem("products",JSON.stringify(data.destinations))
 
       for (let i = 0; i < data.destinations.length; i++) {
         var product = data.destinations[i];
-
         var a = document.createElement("div");
         a.classList.add("productt");
         a.innerHTML = `
@@ -229,7 +242,7 @@
             <a href="#"><i class="fa-solid fa-location-dot"></i> ${product.capital}</a>
           </div>
           <div class="btn"> 
-            <button class='view'><i class="fa-solid fa-eye"></i> view</button>
+            <button class='view'  onclick="view(${product.id})"><i class="fa-solid fa-eye"></i> view</button>
             <button class='love' onclick="loved(${product.id})">
               <i class="fa-solid fa-heart"></i>
             </button>
@@ -239,6 +252,7 @@
         contanner.appendChild(a);
       }
     });
+   
 </script>
 
 </html>
