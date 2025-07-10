@@ -60,80 +60,68 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+    const container = document.getElementById("favcards");
+    let favcards = JSON.parse(localStorage.getItem("loved")) || [];
+    console.log(favcards);
+    
 
+    function trips() {
+        container.innerHTML = "";
+        container.classList.add("container");
 
-        var newv = localStorage.getItem("loved");
-        const container = document.getElementById("favcards");
-        const favcards = newv ? JSON.parse(newv) : [];
-
-        function trips() {
-            container.innerHTML = "";
-            container.classList.add("container");
-
-            if (favcards.length === 0) {
-                container.innerHTML = `
-               <div class="topbutton text-end me-3">
-               <a href="destinations.html" class="btn btn-primary">
-               <i class="fa-solid fa-plus me-2"></i> Add sample items
-              </a>
-               </div>
-
-               <div class="text-center p-4" style="font-family: Arial, sans-serif;">
-                 <h4 class="headicon mb-3" style="font-weight: bold;">
-                     <i class="fa-solid fa-heart me-2"></i> No favorites yet
-                  </h4>
-
-                <p class="empty mb-4" style="font-size: 1rem;">
-                  Start exploring destinations and add them to your favorites to see them here.
-                </p>
-
-                <button class="btn btn-primary">
-                   <a href="destinations.html"> <i class="fa-solid fa-magnifying-glass-location me-2"></i> Explore destinations</a>
-
-                     </button>
-              </div>
-
+        if (favcards.length === 0) {
+            container.innerHTML = `
+                <div class="topbutton text-end me-3 mb-3">
+                    <a href="destinations.html" class="btn btn-primary">
+                        <i class="fa-solid fa-plus me-2"></i> Add sample items
+                    </a>
+                </div>
+                <div class="text-center p-4">
+                    <h4 class="mb-3"><i class="fa-solid fa-heart me-2"></i> No favorites yet</h4>
+                    <p class="mb-4">Start exploring destinations and add them to your favorites to see them here.</p>
+                    <a href="destinations.html" class="btn btn-primary">
+                        <i class="fa-solid fa-magnifying-glass-location me-2"></i> Explore destinations
+                    </a>
+                </div>
             `;
-                return;
-            } else {
-
-                container.innerHTML = `
-        <div class="text-end me-3 mb-3">
-            <button class="btn btn-danger" onclick="clearAll()">Clear All</button>
-        </div>
-        `;
-
-
-                favcards.forEach((item, index) => {
-                    const div = document.createElement("div");
-                    div.classList.add("card", "p-3", "m-2");
-
-                    div.innerHTML = `
-                    < img src = "${item.image}" alt = "${item.name}" class="imag" >
-                <p><strong>${item.name}</strong></p>
-                <p>${item.price} EGP</p>
-                <button class="btn btn-danger rounded w-100" onclick="removeFromCart(${index})">Remove</button>
-            `;
-
-                    container.appendChild(div);
-                });
-
-                function removeFromCart(index) {
-                    favcards.splice(index, 1);
-                    localStorage.setItem("favcards", JSON.stringify(cart));
-                    trips();
-                }
-
-                function clearAll(){
-                    localStorage.clear("loved");
-                    trips();
-                }
-            }
-
+            return;
         }
 
+        container.innerHTML = `
+            <div class="text-end me-3 mb-3">
+                <button class="btn btn-danger" onclick="clearAll()">Clear All</button>
+            </div>
+        `;
+
+        favcards.forEach((item, index) => {
+            const div = document.createElement("div");
+            div.classList.add("card", "p-3", "m-5");
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="imag">
+                <p>${item.country}</p>
+                 <p>${item.description}</p>
+               
+                <button class="btn btn-danger rounded w-50 " onclick="removeFromCart(${index})">Remove</button>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function removeFromCart(index) {
+        favcards.splice(index, 1);
+        localStorage.setItem("loved", JSON.stringify(favcards));
         trips();
-    </script>
+    }
+
+    function clearAll() {
+        localStorage.removeItem("loved");
+        favcards = [];
+        trips();
+    }
+
+    trips();
+</script>
+
 
 </body>
 
