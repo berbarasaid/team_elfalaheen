@@ -5,7 +5,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* عنوان الصفحة */
 .theheading {
     text-align: center;
     margin: 20px;
@@ -33,11 +32,12 @@ body {
     justify-content: center;
     width: 90%;
     min-height: 400px;
+    text-align: center;
 }
 
 #favcards p {
     text-align: center;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@ body {
 }
 
 .card {
-    width: 280px; د
+    width: 280px; 
     border-radius: 10px;
     overflow: hidden;
     padding: 15px;
@@ -70,7 +70,7 @@ body {
 }
 
 .card p {
-    font-size: 16px;  /* أكبر من 10px */
+    font-size: 16px;  
     margin: 5px 0;
     color: #333;
 }
@@ -103,7 +103,7 @@ a {
 
 .topbutton {
     text-align: right;
-    margin: 10px;
+    margin: px;
 }
 
 .clear-button {
