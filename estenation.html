@@ -123,7 +123,7 @@
             <a class="nav-link" href="#">My Trips</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="fav.html">Favorites</a>
+            <a class="nav-link" href="#">Favorites</a>
           </li>
         </ul>
 
@@ -172,16 +172,26 @@
 <script src="./js/bootstrap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  
+
   var myArray = JSON.parse(localStorage.getItem("loved")) || [];
-  
+  var allProducts = [];
 
   function loved(id) {
 
-var pro=JSON.parse(localStorage.getItem("products"))
-var favItem = pro.find(p => p.id === id);
-   if(favItem){
+    var favItem = allProducts.find(p => p.id === id);
+
+    if (!favItem) {
+      Swal.fire({
+        title: "Item not found!",
+        icon: "error",
+        draggable: true
+      });
+      return;
+    }
+
+
     var exist = myArray.find(p => p.id === id);
+
     if (!exist) {
       Swal.fire({
         title: "Added to loved!",
@@ -189,74 +199,81 @@ var favItem = pro.find(p => p.id === id);
         draggable: true
       });
 
-     
       myArray.push(favItem);
-console.log(myArray);
 
       localStorage.setItem("loved", JSON.stringify(myArray));
-   }
-     else {
+    } else {
       Swal.fire({
         title: "Already loved!",
         icon: "info",
         draggable: true
       });
-    }}
-  }
-  function view(id) {
-    var pro=JSON.parse(localStorage.getItem("products"))
-    var favItem = pro.find(p => p.id === id);
-    console.log(favItem);
-    
-    localStorage.setItem("view", JSON.stringify(favItem));
-       window.location.href="details.html"
-      
     }
-
+  }
 
   fetch("https://edu-me01.github.io/Traval-task/api/data.json")
     .then(response => response.json())
     .then(data => {
+      allProducts = data.destinations;  //  خزن المنتجات في المتغير العام
+
+      localStorage.setItem("products", JSON.stringify(allProducts));
+
       var x = document.getElementById("v1");
       var y = document.getElementById("v2");
       var z = document.getElementById("v3");
       var a = document.getElementById("v4");
 
-      x.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
-      y.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
-      z.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
-      a.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">42,664,776</h3>`;
+      x.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
+      y.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
+      z.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
+      a.innerHTML += `<h3 style="color:rgb(65, 29, 143);">42,664,776</h3>`;
+
 
       var contanner = document.getElementById("contanner");
-      localStorage.setItem("products",JSON.stringify(data.destinations))
 
       for (let i = 0; i < data.destinations.length; i++) {
         var product = data.destinations[i];
+
         var a = document.createElement("div");
         a.classList.add("productt");
         a.innerHTML = `
-          <img src="${product.image}" />
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-          <div id="xx">
-            <a href="#">${product.country}</a> 
-            <p><i class="fa-solid fa-users"></i> ${product.population}</p>
-          </div>
-          <div class="dd">
-            <a href="#"><i class="fa-solid fa-location-dot"></i> ${product.capital}</a>
-          </div>
-          <div class="btn"> 
-            <button class='view'  onclick="view(${product.id})"><i class="fa-solid fa-eye"></i> view</button>
-            <button class='love' onclick="loved(${product.id})">
-              <i class="fa-solid fa-heart"></i>
-            </button>
-          </div>
-        `;
+        <img src="${product.image}" />
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <div id="xx">
+          <a href="#">${product.country}</a> 
+          <p><i class="fa-solid fa-users"></i> ${product.population}</p>
+        </div>
+        <div class="dd">
+          <a href="#"><i class="fa-solid fa-location-dot"></i> ${product.capital}</a>
+        <div class="d-flex align-items-center gap-2 mt-3">
+    <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="view(${product.id})">
+        <i class="fa-solid fa-eye me-1"></i> View
+    </button>
+    <button class="btn btn-outline-danger btn-sm rounded-pill px-3" onclick="loved(${product.id})">
+        <i class="fa-solid fa-heart me-1"></i> Favorite
+    </button>
+</div>
+
+
+          
+        </div>
+      `;
 
         contanner.appendChild(a);
       }
     });
-   
+
+  function view(id) {
+    var pro = JSON.parse(localStorage.getItem("products"))
+    var favItem = pro.find(p => p.id === id);
+    console.log(favItem);
+
+    localStorage.setItem("view", JSON.stringify(favItem));
+    window.location.href = "details.html"
+
+  }
+
 </script>
 
 </html>
