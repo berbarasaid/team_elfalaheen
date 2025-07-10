@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>favprites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="fav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark" style="background-color: #6f42c1;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🛩Travel Planner </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" st href="#">Destination</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Trips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fav.html" style="c">Favorites</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div><button style="background-color: white ;padding: 7px ;border-radius: 20px; " id="login"> <i
+                        class="fa-solid fa-user"></i> Login/Register</button></div>
+        </div>
+    </nav>
+    <div class="theheading ">
+        <h1>my favorites <i class="fa-solid fa-heart"></i></h1>
+        <p>save and organize your favorite detinations and trips</p>
+    </div>
+    <div id="favcards">
+        <p><i class="fa-solid fa-heart"></i>Saved Favorites</p>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+
+        var newv = localStorage.getItem("loved");
+        const container = document.getElementById("favcards");
+        const favcards = newv ? JSON.parse(newv) : [];
+
+        function trips() {
+            container.innerHTML = "";
+            container.classList.add("container");
+
+            if (favcards.length === 0) {
+                container.innerHTML = `
+               <div class="topbutton text-end me-3">
+               <a href="destinations.html" class="btn btn-primary">
+               <i class="fa-solid fa-plus me-2"></i> Add sample items
+              </a>
+               </div>
+
+               <div class="text-center p-4" style="font-family: Arial, sans-serif;">
+                 <h4 class="headicon mb-3" style="font-weight: bold;">
+                     <i class="fa-solid fa-heart me-2"></i> No favorites yet
+                  </h4>
+
+                <p class="empty mb-4" style="font-size: 1rem;">
+                  Start exploring destinations and add them to your favorites to see them here.
+                </p>
+
+                <button class="btn btn-primary">
+                   <a href="destinations.html"> <i class="fa-solid fa-magnifying-glass-location me-2"></i> Explore destinations</a>
+
+                     </button>
+              </div>
+
+            `;
+                return;
+            } else {
+
+                container.innerHTML = `
+        <div class="text-end me-3 mb-3">
+            <button class="btn btn-danger" onclick="clearAll()">Clear All</button>
+        </div>
+        `;
+
+
+                favcards.forEach((item, index) => {
+                    const div = document.createElement("div");
+                    div.classList.add("card", "p-3", "m-2");
+
+                    div.innerHTML = `
+                    < img src = "${item.image}" alt = "${item.name}" class="imag" >
+                <p><strong>${item.name}</strong></p>
+                <p>${item.price} EGP</p>
+                <button class="btn btn-danger rounded w-100" onclick="removeFromCart(${index})">Remove</button>
+            `;
+
+                    container.appendChild(div);
+                });
+
+                function removeFromCart(index) {
+                    favcards.splice(index, 1);
+                    localStorage.setItem("favcards", JSON.stringify(cart));
+                    trips();
+                }
+
+                function clearAll(){
+                    localStorage.clear("loved");
+                    trips();
+                }
+            }
+
+        }
+
+        trips();
+    </script>
+
+</body>
+
+</html>
