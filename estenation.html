@@ -174,7 +174,7 @@
 <script>
 
   var myArray = JSON.parse(localStorage.getItem("loved")) || [];
-  var allProducts = [];  
+  var allProducts = [];
 
   function loved(id) {
 
@@ -189,7 +189,7 @@
       return;
     }
 
-   
+
     var exist = myArray.find(p => p.id === id);
 
     if (!exist) {
@@ -199,7 +199,7 @@
         draggable: true
       });
 
-      myArray.push(favItem); 
+      myArray.push(favItem);
 
       localStorage.setItem("loved", JSON.stringify(myArray));
     } else {
@@ -223,10 +223,11 @@
       var z = document.getElementById("v3");
       var a = document.getElementById("v4");
 
-      x.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
-      y.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
-      z.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
-      a.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">42,664,776</h3>`;
+      x.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
+      y.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
+      z.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
+      a.innerHTML += `<h3 style="color:rgb(65, 29, 143);">42,664,776</h3>`;
+
 
       var contanner = document.getElementById("contanner");
 
@@ -263,15 +264,15 @@
       }
     });
 
-    function view(id) {
-    var pro=JSON.parse(localStorage.getItem("products"))
+  function view(id) {
+    var pro = JSON.parse(localStorage.getItem("products"))
     var favItem = pro.find(p => p.id === id);
     console.log(favItem);
-    
+
     localStorage.setItem("view", JSON.stringify(favItem));
-       window.location.href="details.html"
-      
-    }
+    window.location.href = "details.html"
+
+  }
 
 </script>
 
