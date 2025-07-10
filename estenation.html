@@ -204,8 +204,12 @@ console.log(myArray);
     }}
   }
   function view(id) {
-
-      window.location.href="details.html"
+    var pro=JSON.parse(localStorage.getItem("products"))
+    var favItem = pro.find(p => p.id === id);
+    console.log(favItem);
+    
+    localStorage.setItem("view", JSON.stringify(favItem));
+       window.location.href="details.html"
       
     }
 
