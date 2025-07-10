@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
@@ -52,7 +54,7 @@
     }
 
     #maincontainer {
-      background-color: white;
+      background-color: #eee;
       width: 90%;
       max-width: 900px;
       min-height: 400px;
@@ -62,17 +64,86 @@
       padding: 20px;
       text-align: center;
     }
-    #big{
+
+    #big {
+      display: flex;
+      justify-content: space-evenly;
+
+    }
+
+    #big div {
+      background-color: #d7d7d7;
+      padding: 10px;
+      border-radius: 6px;
+      width: 150px;
+
+    }
+
+    #description {
+      margin: 20px;
+      border-radius: 10px;
+      background-color: white;
+      padding: 15px;
+      text-align: left;
+    }
+
+    #attraction {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    #content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #content div {
+      width: 200px;
+    }
+
+    #cont {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    #contt {
       display: flex;
       justify-content: space-evenly;
     }
-    #big div{
-      background-color: #eee;
-      padding: 10px;
-      border-radius: 6px; 
+
+    #contt div {
+      height: 150px;
       width: 150px;
-      
+      margin: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      color: white;
+      gap: 10px;
+      background-color: #a50cad;
+      background: linear-gradient(90deg, rgb(115, 0, 255), rgb(230, 0, 255));
+
     }
+    #last {
+      background-color: white;
+     padding-top: 20px;
+     padding-bottom: 20px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+    #last button{
+      background-color: white;
+      border-radius: 10px;
+      margin-top: 10px;
+      color: rgb(42, 198, 201);
+      border: 1.5px solid  rgb(42, 198, 201);
+    }
+
   </style>
 </head>
 
@@ -125,14 +196,49 @@
   <div id="maincontainer">
     <p>Destination content will appear here.</p>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-<script>
-  var div = document.getElementById("maincontainer"); 
-  var view= JSON.parse(localStorage.getItem("view")); 
-  console.log(view);
-  div.innerHTML=`
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+  <script>
+
+var myArray = JSON.parse(localStorage.getItem("loved")) || [];
+  console.log(myArray);
+  
+
+  function loved(id) {
+  var pro = JSON.parse(localStorage.getItem("products"));
+  
+
+  var favItem = pro.find(p => p.id === id);
+
+  if (favItem) {
+    var exist = myArray.find(p => p.id === id);
+    if (!exist) {
+      Swal.fire({
+        title: "Added to loved!",
+        icon: "success",
+        draggable: true
+      });
+
+      myArray.push(favItem);
+      localStorage.setItem("loved", JSON.stringify(myArray));
+    } else {
+      Swal.fire({
+        title: "Already loved!",
+        icon: "info",
+        draggable: true
+      });
+    }
+  }
+}
+
+
+    var div = document.getElementById("maincontainer");
+    var view = JSON.parse(localStorage.getItem("view"));
+    console.log(view);
+    div.innerHTML = `
   <div>  <img  src="${view.image}" alt="Destination Image" style="max-width: 100%; border-radius: 10px;">;</div>
   <h3>${view.name}</h3>
   <p>  the pest time to viset${view.bestTime}</p>
@@ -144,9 +250,43 @@
 
    
     </div>
-    div
+    <div id ="description"> <h1><i class="fa-solid fa-circle-exclamation"></i> about ${view.name}</h1>
+      <p>${view.description}</p></div>
+      <div id="attraction">
+        <h1><i class="fa-solid fa-star" style="color: #B197FC;"></i> attraction& information</h1>
+        <div id="content"> 
+          <div><h4><i class="fa-solid fa-location-dot"></i> top attraction</h4><p><i class="fa-solid fa-check"></i> ${view.attractions[0]}</p><p><i class="fa-solid fa-check"> ${view.attractions[1]}</i></p><p><i class="fa-solid fa-check"></i> ${view.attractions[2]}</p><p><i class="fa-solid fa-check"></i> ${view.attractions[3]}</p></div> 
+                    <div><h4><i class="fa-solid fa-circle-exclamation"></i> travel info </h4><p><i class="fa-solid fa-calendar"></i> the best time ${view.bestTime}</p><p><i class="fa-solid fa-money-bill"></i> the currency : ${view.currency}</p><p><i class="fa-solid fa-language"></i> the languege is  ${view.language}</p></div> 
+</div>
+</div>
+                    <div id="cont">  <h4><i class="fa-solid fa-cloud-sun"></i> current weather</h4> <div id="contt" >
+                      <div class="blue"><i class="fa-solid fa-temperature-three-quarters"></i><h3>${view.weather.current}</h3><p>current</p> </div>
+                      <div class="blue"><i class="fa-solid fa-up-long"></i><h3>${view.weather.high}</h3><p>high</p></div>
+                      <div class="blue"><i class="fa-solid fa-down-long"></i><h3>${view.weather.low}</h3><p>low</p></div>
+                      <div class="blue"><i class="fa-solid fa-cloud"></i><h3>${view.weather.condition}</h3><p>Sunny</p></div>
+                     </div>
+                     </div>
+                     <div id="last">
+                      <h3> plan your trip</h3>
+                      <div>
+                     <button >+ add to my travel</button>
+                     <button onclick="loved( ${view.id})"> <i class="fa-solid fa-heart"></i> add to favorite </button>
+                     <button ><i class="fa-solid fa-heart"></i> share destenation</button>
+                     <button onclick="back()"><i class="fa-solid fa-arrow-left"></i> back to destenation</button>
+                      </div>
+                      </div>
+                      
+        </div>
   `
+
+
+ function back() {
+  window.location.href="estenation.html"
   
-</script>
+ }
+
+
+  </script>
 </body>
+
 </html>
