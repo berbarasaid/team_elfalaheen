@@ -18,6 +18,10 @@
       border-radius: 6px;
       width: 400px;
       background-color: azure;
+      transition: .5s;
+    }
+    .details:hover{
+transform: scale(1.2);
     }
 
     .impo {
@@ -26,6 +30,7 @@
       justify-content: space-evenly;
       border-radius: 6px;
       margin: 0px;
+      transition: .5s;
     }
 
     .impo div {
@@ -66,7 +71,13 @@
       border-radius: 10px;
       overflow: hidden;
       background-color: white;
+     
+      transition: .5s;
 
+    }
+    .productt:hover{
+      transform: scale(1.1);
+      box-shadow: 10px 10px 25px rgb(150, 30, 187);
     }
 
     .productt a {
@@ -100,6 +111,9 @@
       display: flex;
       justify-content: space-between;
     }
+    .impo:hover{
+transform: scale(1.2);
+    }
   </style>
 </head>
 
@@ -129,7 +143,7 @@
 
       </div>
       <button style="background-color: white;padding: 7px ;border-radius: 20px; " id="login"> <i
-          class="fa-solid fa-user"></i> Login/Register</button>
+          class="fa-solid fa-user"v id="login"></i> Login/Register</button><span id="username"></span>
     </div>
 
   </nav>
@@ -172,6 +186,11 @@
 <script src="./js/bootstrap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    const f = localStorage.getItem("userEmail");
+        if (f) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("username").innerHTML = `<h3 style="color:white"> Welcome, ${f}</h3>`;
+  }
 
   var myArray = JSON.parse(localStorage.getItem("loved")) || [];
   var allProducts = [];
