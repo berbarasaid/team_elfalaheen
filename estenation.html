@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Destenation</title>
+  <link rel="stylesheet" href="./js/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .content {
+      align-items: center;
+
+    }
+
+    .details {
+
+      padding: 10px;
+      border-radius: 6px;
+      width: 400px;
+      background-color: azure;
+    }
+
+    .impo {
+
+      display: flex;
+      justify-content: space-evenly;
+      border-radius: 6px;
+      margin: 0px;
+    }
+
+    .impo div {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .impo p {
+      color: rgb(114, 117, 117);
+    }
+
+    .biger {
+
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: linear-gradient(90deg, rgb(123, 28, 224), rgb(155, 45, 215));
+    }
+
+
+
+    #contanner {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      background-color: #eee;
+      width: 80%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-content: space-evenly;
+    }
+
+    .productt {
+      width: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: white;
+
+    }
+
+    .productt a {
+      color: white;
+      text-decoration: none;
+      background: linear-gradient(90deg, rgb(123, 28, 224), rgb(155, 45, 215));
+      padding: 5px;
+      border-radius: 6px;
+    }
+
+    p {
+      margin: 10px;
+    }
+
+    h3 {
+      margin: 10px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    #xx {
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dd {
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark" style="background: linear-gradient(90deg , rgb(123, 28, 224) , rgb(155, 45, 215));">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-plane"></i>Travel Planner </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Destination</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Favorites</a>
+          </li>
+        </ul>
+
+      </div>
+      <button style="background-color: white;padding: 7px ;border-radius: 20px; " id="login"> <i
+          class="fa-solid fa-user"></i> Login/Register</button>
+    </div>
+
+  </nav>
+  <div
+    style="display: flex; flex-direction: column;text-align: center; justify-items: center; justify-content: center; background: linear-gradient(90deg , rgb(123, 28, 224) , rgb(166, 47, 230));">
+    <h1 style="color: white; "> <i class="fa-solid fa-map-location-dot"></i>destenation details</h1>
+    <p style="color: white;">exeplor every thing you need</p>
+  </div>
+  <div class="content"
+    style="display: flex; flex-direction: column;text-align: center; justify-items: center; justify-content: center; background: linear-gradient(90deg , rgb(123, 28, 224) , rgb(166, 47, 230)); align-content: center; justify-content: center;">
+    <div class="details">
+      <h3 style="margin: 10px;"><i class="fa-solid fa-magnifying-glass"></i>find your pirfect destenation</h3> <i
+        class="fa-solid fa-house"></i> home / <i class="fa-solid fa-globe"></i>destenation / <i
+        class="fa-solid fa-location-dot"></i> destenation details
+    </div>
+    <div class="impo" style="width: 500px; margin: 30px ;background-color: azure;">
+      <div id="v1">
+
+        <p>total destination</p>
+      </div>
+      <div id="v2">
+
+        <p>showing</p>
+      </div>
+      <div id="v3">
+
+        <p>Regions</p>
+      </div>
+      <div id="v4">
+
+        <p>total population</p>
+      </div>
+    </div>
+  </div>
+  <div class="biger">
+    <div id="contanner">
+    </div>
+  </div>
+</body>
+<script src="./js/bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  
+  var myArray = JSON.parse(localStorage.getItem("loved")) || [];
+
+  function loved(id) {
+    var exist = myArray.find(p => p.id === id);
+    if (!exist) {
+      Swal.fire({
+        title: "Added to loved!",
+        icon: "success",
+        draggable: true
+      });
+
+     
+      myArray.push({ id: id });
+
+      localStorage.setItem("loved", JSON.stringify(myArray));
+    } else {
+      Swal.fire({
+        title: "Already loved!",
+        icon: "info",
+        draggable: true
+      });
+    }
+  }
+
+  fetch("https://edu-me01.github.io/Traval-task/api/data.json")
+    .then(response => response.json())
+    .then(data => {
+      var x = document.getElementById("v1");
+      var y = document.getElementById("v2");
+      var z = document.getElementById("v3");
+      var a = document.getElementById("v4");
+
+      x.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
+      y.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
+      z.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">6</h3>`;
+      a.innerHTML += `<h3 style="color:rgb(65, 29, 143); ">42,664,776</h3>`;
+
+      var contanner = document.getElementById("contanner");
+
+      for (let i = 0; i < data.destinations.length; i++) {
+        var product = data.destinations[i];
+
+        var a = document.createElement("div");
+        a.classList.add("productt");
+        a.innerHTML = `
+          <img src="${product.image}" />
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <div id="xx">
+            <a href="#">${product.country}</a> 
+            <p><i class="fa-solid fa-users"></i> ${product.population}</p>
+          </div>
+          <div class="dd">
+            <a href="#"><i class="fa-solid fa-location-dot"></i> ${product.capital}</a>
+          </div>
+          <div class="btn"> 
+            <button class='view'><i class="fa-solid fa-eye"></i> view</button>
+            <button class='love' onclick="loved(${product.id})">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </div>
+        `;
+
+        contanner.appendChild(a);
+      }
+    });
+</script>
+
+</html>
