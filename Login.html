@@ -14,7 +14,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #8e2de2, #27144d);
+      background: linear-gradient(to right, #486bc4, #7931ee);
+
       margin: 0;
       padding: 0;
     }
@@ -55,7 +56,8 @@
     }
 
     .tabs button.active:hover {
-      background: linear-gradient(to right, #80649e, #170527);
+      background: linear-gradient(to right, #486bc4, #7931ee);
+
     }
 
     input[type="email"],
@@ -70,7 +72,8 @@
     button#loginBtn {
       width: 100%;
       padding: 12px;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
+      background: linear-gradient(to right, #486bc4, #7931ee);
+
       color: white;
       font-size: 16px;
       border: none;
@@ -79,7 +82,8 @@
     }
 
     button#loginBtn:hover {
-      background: linear-gradient(to right, #6a11cb, #170527);
+background: linear-gradient(to right, #486bc4, #7931ee);
+
     }
 
     label {
@@ -97,7 +101,8 @@
       border-radius: 10px 10px 0px 0px;
       padding: 10px;
       color: white;
-      background: linear-gradient(to right, #8e2de2, #27144d);
+    background: linear-gradient(to right, #486bc4, #7931ee)
+
     }
 
     #remember {
@@ -113,9 +118,9 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-dark" style="background-color: #6f42c1;">
+  <nav class="navbar navbar-dark"    style="  background: linear-gradient(to right, #486bc4, #7027e4);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">🛩Travel Planner </a>
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-plane"></i>Travel Planner </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -142,26 +147,26 @@
   <div class="main-content">
     <div class="container">
       <div class="tab">
-        <h1> 🙍‍♂Welcome Back </h1>
+        <h1> <i class="fa-solid fa-circle-user"></i>Welcome Back </h1>
         <p> Sign in your account or create a new one to start planning your next adventure</p>
       </div>
 
       <div class="two">
         <div class="tabs">
-          <button class="active">🔐 Login</button>
-          <button class="btn btn-outline-dark">👤 Register</button>
+          <button class="active"><i class="fa-solid fa-lock"></i> Login</button>
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-user"></i> Register</button>
         </div>
 
         <form id="loginForm">
-          <label for="email"> 📩 Email Address </label>
+          <label for="email"> <i class="fa-solid fa-envelope"></i>  Email Address </label>
           <input type="email" id="email" placeholder="Enter your email" required class="form-control" />
 
-          <label for="password"> 🔒 Password </label>
+          <label for="password"> <i class="fa-solid fa-lock"></i> Password </label>
           <input type="password" id="password" placeholder="Enter your password" required class="form-control" />
 
           <label><input type="checkbox" id="remember"> Remember me</label>
 
-          <button type="submit" id="loginBtn">🔓 Sign In</button>
+          <button type="submit" id="loginBtn"><i class="fa-solid fa-lock-open"></i> Sign In</button>
         </form>
       </div>
     </div>

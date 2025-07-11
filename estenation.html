@@ -48,7 +48,8 @@ transform: scale(1.2);
       width: 100%;
       display: flex;
       justify-content: center;
-      background: linear-gradient(90deg, rgb(123, 28, 224), rgb(155, 45, 215));
+      background: linear-gradient(to right, #486bc4, #7931ee);
+
     }
 
 
@@ -56,6 +57,7 @@ transform: scale(1.2);
     #contanner {
       padding: 10px;
       margin: 10px;
+      margin-top: 20px;
       border-radius: 10px;
       background-color: #eee;
       width: 80%;
@@ -67,6 +69,7 @@ transform: scale(1.2);
     }
 
     .productt {
+      margin-top: 20px;
       width: 400px;
       border-radius: 10px;
       overflow: hidden;
@@ -79,12 +82,21 @@ transform: scale(1.2);
       transform: scale(1.1);
       box-shadow: 10px 10px 25px rgb(150, 30, 187);
     }
-
-    .productt a {
-      color: white;
+    a{
       text-decoration: none;
-      background: linear-gradient(90deg, rgb(123, 28, 224), rgb(155, 45, 215));
-      padding: 5px;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .productt .none {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      background: linear-gradient(to right, #486bc4, #7931ee);
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      padding: 2px;
       border-radius: 6px;
     }
 
@@ -114,11 +126,12 @@ transform: scale(1.2);
     .impo:hover{
 transform: scale(1.2);
     }
+    
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark" style="background: linear-gradient(90deg , rgb(123, 28, 224) , rgb(155, 45, 215));">
+  <nav class="navbar navbar-dark" style="      background: linear-gradient(to right, #486bc4, #6a29d4)">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><i class="fa-solid fa-plane"></i>Travel Planner </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -148,12 +161,13 @@ transform: scale(1.2);
 
   </nav>
   <div
-    style="display: flex; flex-direction: column;text-align: center; justify-items: center; justify-content: center; background: linear-gradient(90deg , rgb(123, 28, 224) , rgb(166, 47, 230));">
+    style="display: flex; flex-direction: column;text-align: center; justify-items: center; justify-content: center;       background: linear-gradient(to right, #486bc4, #7931ee);
+">
     <h1 style="color: white; "> <i class="fa-solid fa-map-location-dot"></i>destenation details</h1>
     <p style="color: white;">exeplor every thing you need</p>
   </div>
   <div class="content"
-    style="display: flex; flex-direction: column;text-align: center; justify-items: center; justify-content: center; background: linear-gradient(90deg , rgb(123, 28, 224) , rgb(166, 47, 230)); align-content: center; justify-content: center;">
+    style="display: flex; flex-direction: column;text-align: center; justify-items: center; justify-content: center;       background: linear-gradient(to right, #486bc4, #7931ee); align-content: center; justify-content: center;">
     <div class="details">
       <h3 style="margin: 10px;"><i class="fa-solid fa-magnifying-glass"></i>find your pirfect destenation</h3> <i
         class="fa-solid fa-house"></i> home / <i class="fa-solid fa-globe"></i>destenation / <i
@@ -189,7 +203,7 @@ transform: scale(1.2);
     const f = localStorage.getItem("userEmail");
         if (f) {
     document.getElementById("login").style.display = "none";
-    document.getElementById("username").innerHTML = `<h3 style="color:white"> Welcome, ${f}</h3>`;
+    document.getElementById("username").innerHTML = `<h5 style="color:white"> Welcome, ${f}</h5>`;
   }
 
   var myArray = JSON.parse(localStorage.getItem("loved")) || [];
@@ -233,7 +247,7 @@ transform: scale(1.2);
   fetch("https://edu-me01.github.io/Traval-task/api/data.json")
     .then(response => response.json())
     .then(data => {
-      allProducts = data.destinations;  //  خزن المنتجات في المتغير العام
+      allProducts = data.destinations;  
 
       localStorage.setItem("products", JSON.stringify(allProducts));
 
@@ -242,10 +256,10 @@ transform: scale(1.2);
       var z = document.getElementById("v3");
       var a = document.getElementById("v4");
 
-      x.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
-      y.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
-      z.innerHTML += `<h3 style="color:rgb(65, 29, 143);">6</h3>`;
-      a.innerHTML += `<h3 style="color:rgb(65, 29, 143);">42,664,776</h3>`;
+      x.innerHTML += `<h3  style="color:rgb(65, 29, 143);">6</h3>`;
+      y.innerHTML += `<h3 id="v6" style="color:rgb(65, 29, 143);">6</h3>`;
+      z.innerHTML += `<h3 id="v7" style="color:rgb(65, 29, 143);">6</h3>`;
+      a.innerHTML += `<h3 id="v8" style="color:rgb(65, 29, 143);">42,664,776</h3>`;
 
 
       var contanner = document.getElementById("contanner");
@@ -260,11 +274,11 @@ transform: scale(1.2);
         <h3>${product.name}</h3>
         <p>${product.description}</p>
         <div id="xx">
-          <a href="#">${product.country}</a> 
+          <a href="#" class="none">${product.country}</a> 
           <p><i class="fa-solid fa-users"></i> ${product.population}</p>
         </div>
         <div class="dd">
-          <a href="#"><i class="fa-solid fa-location-dot"></i> ${product.capital}</a>
+          <a href="#" ><i class="fa-solid fa-location-dot"></i> ${product.capital}</a>
         <div class="d-flex align-items-center gap-2 mt-3">
     <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="view(${product.id})">
         <i class="fa-solid fa-eye me-1"></i> View
@@ -292,7 +306,7 @@ transform: scale(1.2);
     window.location.href = "details.html"
 
   }
-
+ 
 </script>
 
 </html>

@@ -18,7 +18,7 @@
 
 <body>
 
-    <nav class="navbar navbar-dark" style="background-color: #6f42c1;">
+    <nav class="navbar navbar-dark" style=" background: linear-gradient(to right, #486bc4, #7931ee);">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">🛩Travel Planner </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -64,7 +64,7 @@
         const f = localStorage.getItem("userEmail");
         if (f) {
     document.getElementById("login").style.display = "none";
-    document.getElementById("username").innerHTML = `<h3 style="color:white"> Welcome, ${f}</h3>`;
+    document.getElementById("username").innerHTML = `<h5 style="color:white"> Welcome, ${f}</h5>`;
   }
         const container = document.getElementById("favcards");
         let favcards = JSON.parse(localStorage.getItem("loved")) || [];
@@ -120,9 +120,9 @@
                 div.classList.add("card", "p-3", "m-5");
                 div.innerHTML = `
                 <img src="${item.image}" alt="${item.name}" class="imag">
-                <p><strong>${item.country}</strong></p>
-                 <p>${item.description}</p>
-                   <button class="btn btn-primary w-40 mb-2" onclick="viewItem(${item.id})">
+                <h3><strong>${item.country}</strong></h3>
+                 <p>${item.description.substring(0, 130)} . . .</p>
+                   <button class="btn btn-primary w-40 mb-2" onclick="viewItem(${item.id})  ">
                         <i class="fa-solid fa-eye me-2"></i> View
                     </button>
                

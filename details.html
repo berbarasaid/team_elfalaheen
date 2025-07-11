@@ -13,7 +13,8 @@
 
   <style>
     body {
-      background: linear-gradient(to right, #a50cad, #c369da);
+      background: linear-gradient(to right, #486bc4, #6c28d8);
+
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
@@ -23,7 +24,7 @@
       color: white;
       text-align: center;
       border-radius: 10px;
-      box-shadow: 1px 2px 10px grey;
+     
       padding: 20px;
       margin: 20px auto 10px auto;
       max-width: 90%;
@@ -54,13 +55,13 @@ transform: scale(1.2);
     .links a {
       margin: 5px 10px;
       text-decoration: none;
-      color: rgb(149, 18, 167);
+      color: #6c28d8;
       font-weight: 500;
       transition: all 0.3s ease-in-out;
     }
 
     .links a:hover {
-      color: rgb(210, 41, 232);
+      color:  #6c28d8;
     }
 
     #maincontainer {
@@ -92,7 +93,8 @@ transform: scale(1.2);
     #big div:hover{
       transform: scale(1.2);
       color: #ffffff;
-      background: linear-gradient(90deg , rgb(79, 5, 85),rgb(210, 115, 216));
+      background: linear-gradient(to right, #486bc4, #6c28d8);
+
     }
     #description {
       margin: 20px;
@@ -105,7 +107,8 @@ transform: scale(1.2);
     #description:hover{
       transform: scale(1.2);
       color: #ffffff;
-      background: linear-gradient(90deg , rgb(79, 5, 85),rgb(210, 115, 216));
+      background: linear-gradient(to right, #486bc4, #6c28d8);
+
     
     }
 
@@ -119,7 +122,8 @@ transform: scale(1.2);
     #attraction:hover{
       transform: scale(1.2);
       color: #ffffff;
-      background: linear-gradient(90deg , rgb(79, 5, 85),rgb(210, 115, 216));
+      background: linear-gradient(to right, #486bc4, #6c28d8);
+
     
     }
 
@@ -160,8 +164,8 @@ transform: scale(1.2);
       justify-content: space-evenly;
       color: white;
       gap: 10px;
-      background-color: #a50cad;
-      background: linear-gradient(90deg, rgb(115, 0, 255), rgb(230, 0, 255));
+      background: linear-gradient(to right, #486bc4, #6c28d8);
+      ;
 
     }
     #last {
@@ -175,14 +179,15 @@ transform: scale(1.2);
       background-color: white;
       border-radius: 10px;
       margin-top: 10px;
-      color: rgb(42, 198, 201);
-      border: 1.5px solid  rgb(42, 198, 201);
+      color: #6c28d8;
+      border: 1.5px solid #6c28d8;
       transition: .5s;
     }
     #last button:hover{
       transform: scale(1.2);
       color: #ffffff;
-      background: linear-gradient(90deg , rgb(79, 5, 85),rgb(210, 115, 216));
+      background: linear-gradient(to right, #486bc4, #6c28d8);
+
     
 
     }
@@ -193,9 +198,10 @@ transform: scale(1.2);
 
 <body>
 
-  <nav class="navbar navbar-dark" style="background-color: #6f42c1;">
+  <nav class="navbar navbar-dark" style="      background: linear-gradient(to right, #486bc4, #5d28b3);
+">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">🛩 Travel Planner</a>
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-plane"></i> Travel Planner</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -243,14 +249,14 @@ transform: scale(1.2);
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-<<<<<<< HEAD
+
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
   <script>
       const f = localStorage.getItem("userEmail");
         if (f) {
     document.getElementById("login").style.display = "none";
-    document.getElementById("username").innerHTML = `<h3 style="color:white"> Welcome, ${f}</h3>`;
+    document.getElementById("username").innerHTML = `<h5 style="color:white"> Welcome, ${f}</h5>`;
   }
 
 var myArray = JSON.parse(localStorage.getItem("loved")) || [];

@@ -1,20 +1,46 @@
 
+#login{
+  width: 150px;
+  height: 50px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.992);
+ background-color: #ffffff00;
+ border: white 1.5px solid;
+  
+}
 .photo {
-    position: relative;
-    width: 100%;
-  }
+  background-image: url("download.jpeg");
+  height: 85vh;
+  background-attachment: fixed; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  .photo img {
-    width: 100%;
-    display: block;
-  }
+.photo button{
+  margin-top: 0;
+  transition: .5s;
+}
+
+.photo button:hover{
+  transform: scale(.9);
+}
 
   .photo div:first-of-type {
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 10%;
     color: white;
     text-shadow: 1px 1px 3px black;
+  }
+  .gg{
+    background: linear-gradient(to right, #486bc4, #7931ee);
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+   
+    color: white;
+    border-radius: 5px;
   }
 
   .photo .button {
@@ -22,48 +48,50 @@
     top: 50%;
     left: 10%;
   }
+  .hid:hover{
+    color: #7931ee;
+    border: #7931ee 1.5px solid;
+  }
 
   .photo button {
     margin-right: 10px;
     padding: 10px 20px;
     border: none;
-    background-color: purple;
+    background-color: #ffffff00;
     color: white;
     border-radius: 5px;
+    border: white 1.5px solid;
   }
-  .big{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
-  border-radius: 10px;
-   width: 500px;
-   height: 70vh;
-  }
-  .one{
-    border-radius: 10px;
-    background-color: #6f42c1;
-    color: white;
-    padding: 7px;
-    margin: 10px;
-  }
+  
+  
   .big2{
-    border-radius: 20px;
+    border-radius: 10px;
     width: 80%;
     padding: 20px;
-    margin: 20px auto;
+    margin: 30px auto;
     display: flex;
-  background-color: white;
+    background-color: white;
     justify-content: space-evenly;
     gap: 30px;
+  }
+  .big2 div{
+    margin: 20px;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 210px;
+
+  }
+  .big2 div i{
+    font-size: 35px;
+   color: #7931ee ;
   }
   .big2 div:hover{
     transform: scale(1.1);
   }
-  .big2 div p i{
-    color: blueviolet;
-  }
+  
 
   .big3{
     border-radius: 20px;
@@ -73,6 +101,7 @@
    background-color: white;
     text-align: center;
     gap: 30px;
+   
 
   }
   #api{
@@ -83,13 +112,14 @@
   }
   .class{
     width: 300px;
-    border: 1px solid #ccc;
+   
     padding: 15px;
     background: #fff;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    
+    transition:  0.5s;
+    box-shadow: 10px 10px 25px rgb(191, 191, 193);
   }
   
   .class:hover {
@@ -115,19 +145,29 @@
     margin-bottom: 20px;
   }
   
-  .class button {
-    background-color: purple;
+  .class .vew {
+    background: linear-gradient(to right, #486bc4, #7931ee);
+
     color: white;
     border: none;
     padding: 8px 15px;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.5s;
   }
-  
+  .ex{
+    padding: 3px;
+    border-radius: 20px;
+    background: linear-gradient(to right, #486bc4, #7931ee);
+    color: white;
+    transition: 0.5s;
+
+
+  }
   .class button:hover {
-    background-color: #5a2e8a;
+    
+    transform: scale(.9);
   }
   
   .big4{
@@ -157,22 +197,35 @@
     width: 80%;
     padding: 20px;
     margin: 30px auto;
-    background: linear-gradient(to right, #007bff, #6f42c1);
     text-align: center;
     gap: 30px;
+    background: linear-gradient(to right, #486bc4, #682acd);
+
   }
   .xx button{
-    border-radius: 20px;
+    transition: .5s;
+    border-radius: 6px;
     padding: 10px;
     color: aliceblue;
-    background: linear-gradient(to right, #007bff, #6f42c1);
+    background: linear-gradient(to right, #486bc4, #7931ee);
+  }
+  .xx button:hover{
+    transform: scale(.9);
   }
   footer{
-    background-color: #666;
+    background-color: #313030;
 
+
+  }
+  .brouse{
+    border: none;
+  }
+  .create{
+    border: white 1.5px solid;
 
   }
  .social-icons{
+ 
     padding: 10px;
     display: flex;
     justify-content: flex-end;
@@ -180,4 +233,8 @@
  }
  .social-icons a{
     padding: 10px;
+ }
+ .rr{
+  margin: 10px;
+  margin-top: 20px;
  }
